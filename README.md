@@ -145,6 +145,8 @@ Data warehouse **before adding a new record** in the sales database.
 Data warehouse **after upsert**
 ![AFter](https://github.com/user-attachments/assets/b1b6a105-fd9a-407e-8527-89d89417a694)
 
+[Testing Scenario Code](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/testing-scenario.py)
+
 ---
 
 # - Tools
