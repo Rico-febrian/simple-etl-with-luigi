@@ -1,0 +1,16 @@
+Scraped Data Transformation Requirements
+
+1. Convert all string values to a lowercase
+
+2. Remove all non-numeric characters in the "price" column
+
+3. Create a new column to store the price currency
+
+4. Cast "price" column data type to numeric
+
+5. Rename Columns:
+
+- title -> listing_title
+- url -> source_url
+
+6. Drop all duplicated data 
