@@ -1,0 +1,65 @@
+Sales Data Transformation Requirements
+
+1. Convert all string values to a lowercase
+
+2. Remove all non-numeric characters in the following columns:
+
+- ratings
+- no_of_ratings
+- discount_price
+- actual_price
+
+3. Drop Columns:
+
+Remove the following columns:
+
+- image
+- Unnamed: 0
+
+4. Rename Columns:
+
+- name -> product_name
+- link -> source_url
+- ratings -> rating_value
+- no_of_ratings -> ratings_received'
+
+5. Convert the price values in the 'discount_price' and 'actual_price' columns from INR to USD
+
+6. Generate New Column:
+
+- Create a new column to store the price currency
+
+7. Map New Values:
+
+- main_category: Map the existing values to the following specified categories:
+
+- "women's clothing" -> "women's fashion"
+- "men's clothing" -> "men's fashion"
+- "men's shoes" -> "men's fashion"
+- "women's shoes" -> "women's fashion"
+- "kids' fashion" -> "kid's fashion"
+- 'sports & fitness' -> 'sports & outdoor'
+- 'accessories' -> 'jewelry & accessories'
+- 'appliances' -> 'electronics'
+- 'tv, audio & cameras' -> 'electronics'
+- 'car & motorbike' -> 'automotive & motorcycle'
+- 'stores' -> 'retail store'
+- 'grocery & gourmet foods' -> 'food & beverages'
+- 'music' -> 'film & music'
+- 'home, kitchen, pets' -> 'home & kitchen'
+- "toys & baby products" -> "toys & baby"
+
+8. Cast data type into numeric in the following columns:
+
+- ratings
+- no_of_ratings
+- discount_price
+- actual_price
+
+9. Drop all duplicated data 
+
+10. Impute missing values in "actual_price" column with the median values from each main category
+
+11. Impute missing values in "discount_price" column with zero (no discount)
+
+12. Drop rows with missing values in the "no_of_ratings" column

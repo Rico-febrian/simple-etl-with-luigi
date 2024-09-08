@@ -1,0 +1,55 @@
+Product Data Transformation Requirements
+
+1. Convert all string values to a lowercase
+
+2. Drop all duplicated data 
+
+3. Drop Columns:
+
+Remove the following columns:
+
+- upc
+- weight
+- prices.sourceURLs
+- ean
+- imageURLs
+- keys
+- prices.shipping
+- dateAdded
+- dateUpdated
+- manufacturer
+- manufacturerNumber
+- Unnamed: 26
+- Unnamed: 27
+- Unnamed: 28
+- Unnamed: 29
+- Unnamed: 30
+
+4. Rename Columns:
+
+- id -> product_code
+- name -> product_name
+- prices.availability -> stock_availability
+- prices.condition -> condition
+- prices.currency -> price_currency
+- prices.dateSeen -> latest_date
+- prices.isSale -> is_sale
+- prices.merchant -> merchant
+- categories -> sub_category
+- primaryCategories -> main_category
+- sourceURLs -> source_url
+
+5. Generate New Column:
+
+- Calculate the average value from the amountMax and amountMin columns and store it in a new column called avg_price.
+
+6. Map New Values:
+
+- prices.avail: Map values to boolean (True or False) based on stock availability.
+- prices.condition: Map values to New, Used, and Refurbished based on the product's condition.
+- primaryCategories: Change all values to electronics.
+
+7. Data Type Casting:
+
+- Cast the stock_availability column to boolean.
+- Cast the latest_date column to datetime.
