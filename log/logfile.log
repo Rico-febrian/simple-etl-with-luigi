@@ -1,0 +1,524 @@
+DEBUG: Checking if ExtractProductData() is complete
+INFO: Informed scheduler that task   ExtractProductData__99914b932b   has status   DONE
+DEBUG: Checking if ExtractSalesData() is complete
+INFO: Informed scheduler that task   ExtractSalesData__99914b932b   has status   DONE
+DEBUG: Checking if ExtractScrapedData() is complete
+INFO: Informed scheduler that task   ExtractScrapedData__99914b932b   has status   DONE
+DEBUG: Checking if TransformProductData() is complete
+INFO: Informed scheduler that task   TransformProductData__99914b932b   has status   DONE
+DEBUG: Checking if TransformSalesData() is complete
+INFO: Informed scheduler that task   TransformSalesData__99914b932b   has status   DONE
+DEBUG: Checking if TransformScrapedData() is complete
+INFO: Informed scheduler that task   TransformScrapedData__99914b932b   has status   DONE
+DEBUG: Checking if LoadData() is complete
+INFO: Informed scheduler that task   LoadData__99914b932b   has status   DONE
+INFO: Done scheduling tasks
+INFO: Running Worker with 1 processes
+DEBUG: Asking scheduler for work...
+DEBUG: Done
+DEBUG: There are no more tasks to run at this time
+INFO: Worker Worker(salt=4433950679, workers=1, host=LAPTOP-E1BGNT67, username=ricofebrian, pid=53774) was stopped. Shutting down Keep-Alive thread
+INFO: 
+===== Luigi Execution Summary =====
+
+Scheduled 7 tasks of which:
+* 7 complete ones were encountered:
+    - 1 ExtractProductData()
+    - 1 ExtractSalesData()
+    - 1 ExtractScrapedData()
+    - 1 LoadData()
+    - 1 TransformProductData()
+    ...
+
+Did not run any tasks
+This progress looks :) because there were no failed tasks or missing dependencies
+
+===== Luigi Execution Summary =====
+
+DEBUG: Checking if ExtractProductData() is complete
+INFO: Informed scheduler that task   ExtractProductData__99914b932b   has status   DONE
+DEBUG: Checking if ExtractSalesData() is complete
+INFO: Informed scheduler that task   ExtractSalesData__99914b932b   has status   DONE
+DEBUG: Checking if ExtractScrapedData() is complete
+INFO: Informed scheduler that task   ExtractScrapedData__99914b932b   has status   DONE
+DEBUG: Checking if TransformProductData() is complete
+INFO: Informed scheduler that task   TransformProductData__99914b932b   has status   DONE
+DEBUG: Checking if TransformSalesData() is complete
+INFO: Informed scheduler that task   TransformSalesData__99914b932b   has status   DONE
+DEBUG: Checking if TransformScrapedData() is complete
+INFO: Informed scheduler that task   TransformScrapedData__99914b932b   has status   DONE
+DEBUG: Checking if LoadData() is complete
+INFO: Informed scheduler that task   LoadData__99914b932b   has status   DONE
+INFO: Done scheduling tasks
+INFO: Running Worker with 1 processes
+DEBUG: Asking scheduler for work...
+DEBUG: Done
+DEBUG: There are no more tasks to run at this time
+INFO: Worker Worker(salt=8040942265, workers=1, host=LAPTOP-E1BGNT67, username=ricofebrian, pid=54206) was stopped. Shutting down Keep-Alive thread
+INFO: 
+===== Luigi Execution Summary =====
+
+Scheduled 7 tasks of which:
+* 7 complete ones were encountered:
+    - 1 ExtractProductData()
+    - 1 ExtractSalesData()
+    - 1 ExtractScrapedData()
+    - 1 LoadData()
+    - 1 TransformProductData()
+    ...
+
+Did not run any tasks
+This progress looks :) because there were no failed tasks or missing dependencies
+
+===== Luigi Execution Summary =====
+
+DEBUG: Checking if ExtractProductData() is complete
+WARNING: Failed connecting to remote scheduler 'http://localhost:8082'
+NoneType: None
+INFO: Retrying attempt 2 of 3 (max)
+INFO: Wait for 30 seconds
+WARNING: Failed connecting to remote scheduler 'http://localhost:8082'
+NoneType: None
+INFO: Retrying attempt 2 of 3 (max)
+INFO: Wait for 30 seconds
+WARNING: Failed connecting to remote scheduler 'http://localhost:8082'
+NoneType: None
+INFO: Retrying attempt 3 of 3 (max)
+INFO: Wait for 30 seconds
+WARNING: Failed connecting to remote scheduler 'http://localhost:8082'
+NoneType: None
+INFO: Retrying attempt 3 of 3 (max)
+INFO: Wait for 30 seconds
+DEBUG: Checking if ExtractProductData() is complete
+WARNING: Failed connecting to remote scheduler 'http://localhost:8082'
+NoneType: None
+INFO: Retrying attempt 2 of 3 (max)
+INFO: Wait for 30 seconds
+WARNING: Failed connecting to remote scheduler 'http://localhost:8082'
+NoneType: None
+INFO: Retrying attempt 4 of 3 (max)
+INFO: Wait for 30 seconds
+ERROR: Luigi unexpected framework error while scheduling ExtractProductData()
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/urllib/request.py", line 1348, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+  File "/usr/lib/python3.10/http/client.py", line 1283, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/lib/python3.10/http/client.py", line 1329, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.10/http/client.py", line 1278, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.10/http/client.py", line 1038, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.10/http/client.py", line 976, in send
+    self.connect()
+  File "/usr/lib/python3.10/http/client.py", line 942, in connect
+    self.sock = self._create_connection(
+  File "/usr/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/usr/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ricofebrian/projects/simple-etl/etl_projects/lib/python3.10/site-packages/luigi/rpc.py", line 185, in _fetch
+    response = scheduler_retry(self._fetcher.fetch, full_url, body, self._connect_timeout)
+  File "/home/ricofebrian/projects/simple-etl/etl_projects/lib/python3.10/site-packages/tenacity/__init__.py", line 475, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "/home/ricofebrian/projects/simple-etl/etl_projects/lib/python3.10/site-packages/tenacity/__init__.py", line 376, in iter
+    result = action(retry_state)
+  File "/home/ricofebrian/projects/simple-etl/etl_projects/lib/python3.10/site-packages/tenacity/__init__.py", line 418, in exc_check
+    raise retry_exc.reraise()
+  File "/home/ricofebrian/projects/simple-etl/etl_projects/lib/python3.10/site-packages/tenacity/__init__.py", line 185, in reraise
+    raise self.last_attempt.result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 451, in result
+    return self.__get_result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/home/ricofebrian/projects/simple-etl/etl_projects/lib/python3.10/site-packages/tenacity/__init__.py", line 478, in __call__
+    result = fn(*args, **kwargs)
+  File "/home/ricofebrian/projects/simple-etl/etl_projects/lib/python3.10/site-packages/luigi/rpc.py", line 109, in fetch
+    return urlopen(req, timeout=timeout).read().decode('utf-8')
+  File "/usr/lib/python3.10/urllib/request.py", line 216, in urlopen
+    return opener.open(url, data, timeout)
+  File "/usr/lib/python3.10/urllib/request.py", line 519, in open
+    response = self._open(req, data)
+  File "/usr/lib/python3.10/urllib/request.py", line 536, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+  File "/usr/lib/python3.10/urllib/request.py", line 496, in _call_chain
+    result = func(*args)
+  File "/usr/lib/python3.10/urllib/request.py", line 1377, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+  File "/usr/lib/python3.10/urllib/request.py", line 1351, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno 111] Connection refused>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ricofebrian/projects/simple-etl/etl_projects/lib/python3.10/site-packages/luigi/worker.py", line 806, in add
+    for next in self._add(item, is_complete):
+  File "/home/ricofebrian/projects/simple-etl/etl_projects/lib/python3.10/site-packages/luigi/worker.py", line 911, in _add
+    self._add_task(
+  File "/home/ricofebrian/projects/simple-etl/etl_projects/lib/python3.10/site-packages/luigi/worker.py", line 635, in _add_task
+    self._scheduler.add_task(*args, **kwargs)
+  File "/home/ricofebrian/projects/simple-etl/etl_projects/lib/python3.10/site-packages/luigi/scheduler.py", line 114, in rpc_func
+    return self._request('/api/{}'.format(fn_name), actual_args, **request_args)
+  File "/home/ricofebrian/projects/simple-etl/etl_projects/lib/python3.10/site-packages/luigi/rpc.py", line 198, in _request
+    page = self._fetch(url, body)
+  File "/home/ricofebrian/projects/simple-etl/etl_projects/lib/python3.10/site-packages/luigi/rpc.py", line 187, in _fetch
+    raise RPCError(
+luigi.rpc.RPCError: Errors (3 attempts) when connecting to remote scheduler 'http://localhost:8082'
+WARNING: Failed connecting to remote scheduler 'http://localhost:8082'
+NoneType: None
+INFO: Retrying attempt 2 of 3 (max)
+INFO: Wait for 30 seconds
+WARNING: Failed connecting to remote scheduler 'http://localhost:8082'
+NoneType: None
+INFO: Retrying attempt 4 of 3 (max)
+INFO: Wait for 30 seconds
+WARNING: Failed pinging scheduler
+INFO: Worker Worker(salt=961109867, workers=1, host=LAPTOP-E1BGNT67, username=ricofebrian, pid=5935) was stopped. Shutting down Keep-Alive thread
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/urllib/request.py", line 1348, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+  File "/usr/lib/python3.10/http/client.py", line 1283, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/lib/python3.10/http/client.py", line 1329, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.10/http/client.py", line 1278, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.10/http/client.py", line 1038, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.10/http/client.py", line 976, in send
+    self.connect()
+  File "/usr/lib/python3.10/http/client.py", line 942, in connect
+    self.sock = self._create_connection(
+  File "/usr/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/usr/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ricofebrian/projects/simple-etl/etl_projects/lib/python3.10/site-packages/luigi/rpc.py", line 185, in _fetch
+    response = scheduler_retry(self._fetcher.fetch, full_url, body, self._connect_timeout)
+  File "/home/ricofebrian/projects/simple-etl/etl_projects/lib/python3.10/site-packages/tenacity/__init__.py", line 475, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "/home/ricofebrian/projects/simple-etl/etl_projects/lib/python3.10/site-packages/tenacity/__init__.py", line 376, in iter
+    result = action(retry_state)
+  File "/home/ricofebrian/projects/simple-etl/etl_projects/lib/python3.10/site-packages/tenacity/__init__.py", line 418, in exc_check
+    raise retry_exc.reraise()
+  File "/home/ricofebrian/projects/simple-etl/etl_projects/lib/python3.10/site-packages/tenacity/__init__.py", line 185, in reraise
+    raise self.last_attempt.result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 451, in result
+    return self.__get_result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/home/ricofebrian/projects/simple-etl/etl_projects/lib/python3.10/site-packages/tenacity/__init__.py", line 478, in __call__
+    result = fn(*args, **kwargs)
+  File "/home/ricofebrian/projects/simple-etl/etl_projects/lib/python3.10/site-packages/luigi/rpc.py", line 109, in fetch
+    return urlopen(req, timeout=timeout).read().decode('utf-8')
+  File "/usr/lib/python3.10/urllib/request.py", line 216, in urlopen
+    return opener.open(url, data, timeout)
+  File "/usr/lib/python3.10/urllib/request.py", line 519, in open
+    response = self._open(req, data)
+  File "/usr/lib/python3.10/urllib/request.py", line 536, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+  File "/usr/lib/python3.10/urllib/request.py", line 496, in _call_chain
+    result = func(*args)
+  File "/usr/lib/python3.10/urllib/request.py", line 1377, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+  File "/usr/lib/python3.10/urllib/request.py", line 1351, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno 111] Connection refused>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ricofebrian/projects/simple-etl/etl.py", line 603, in <module>
+    luigi.build([ExtractProductData(),
+  File "/home/ricofebrian/projects/simple-etl/etl_projects/lib/python3.10/site-packages/luigi/interface.py", line 243, in build
+    luigi_run_result = _schedule_and_run(tasks, worker_scheduler_factory, override_defaults=env_params)
+  File "/home/ricofebrian/projects/simple-etl/etl_projects/lib/python3.10/site-packages/luigi/interface.py", line 175, in _schedule_and_run
+    success &= worker.add(t, env_params.parallel_scheduling, env_params.parallel_scheduling_processes)
+  File "/home/ricofebrian/projects/simple-etl/etl_projects/lib/python3.10/site-packages/luigi/worker.py", line 806, in add
+    for next in self._add(item, is_complete):
+  File "/home/ricofebrian/projects/simple-etl/etl_projects/lib/python3.10/site-packages/luigi/worker.py", line 911, in _add
+    self._add_task(
+  File "/home/ricofebrian/projects/simple-etl/etl_projects/lib/python3.10/site-packages/luigi/worker.py", line 635, in _add_task
+    self._scheduler.add_task(*args, **kwargs)
+  File "/home/ricofebrian/projects/simple-etl/etl_projects/lib/python3.10/site-packages/luigi/scheduler.py", line 114, in rpc_func
+    return self._request('/api/{}'.format(fn_name), actual_args, **request_args)
+  File "/home/ricofebrian/projects/simple-etl/etl_projects/lib/python3.10/site-packages/luigi/rpc.py", line 198, in _request
+    page = self._fetch(url, body)
+  File "/home/ricofebrian/projects/simple-etl/etl_projects/lib/python3.10/site-packages/luigi/rpc.py", line 187, in _fetch
+    raise RPCError(
+luigi.rpc.RPCError: Errors (3 attempts) when connecting to remote scheduler 'http://localhost:8082'
+INFO: Informed scheduler that task   ExtractProductData__99914b932b   has status   DONE
+DEBUG: Checking if ExtractSalesData() is complete
+INFO: Informed scheduler that task   ExtractSalesData__99914b932b   has status   DONE
+DEBUG: Checking if ExtractScrapedData() is complete
+INFO: Informed scheduler that task   ExtractScrapedData__99914b932b   has status   DONE
+DEBUG: Checking if TransformProductData() is complete
+INFO: Informed scheduler that task   TransformProductData__99914b932b   has status   DONE
+DEBUG: Checking if TransformSalesData() is complete
+INFO: Informed scheduler that task   TransformSalesData__99914b932b   has status   DONE
+DEBUG: Checking if TransformScrapedData() is complete
+INFO: Informed scheduler that task   TransformScrapedData__99914b932b   has status   DONE
+DEBUG: Checking if LoadData() is complete
+INFO: Informed scheduler that task   LoadData__99914b932b   has status   DONE
+INFO: Done scheduling tasks
+INFO: Running Worker with 1 processes
+DEBUG: Asking scheduler for work...
+DEBUG: Done
+DEBUG: There are no more tasks to run at this time
+INFO: Worker Worker(salt=8750710257, workers=1, host=LAPTOP-E1BGNT67, username=ricofebrian, pid=6384) was stopped. Shutting down Keep-Alive thread
+INFO: 
+===== Luigi Execution Summary =====
+
+Scheduled 7 tasks of which:
+* 7 complete ones were encountered:
+    - 1 ExtractProductData()
+    - 1 ExtractSalesData()
+    - 1 ExtractScrapedData()
+    - 1 LoadData()
+    - 1 TransformProductData()
+    ...
+
+Did not run any tasks
+This progress looks :) because there were no failed tasks or missing dependencies
+
+===== Luigi Execution Summary =====
+
+DEBUG: Checking if ExtractProductData() is complete
+INFO: Informed scheduler that task   ExtractProductData__99914b932b   has status   DONE
+DEBUG: Checking if ExtractSalesData() is complete
+INFO: Informed scheduler that task   ExtractSalesData__99914b932b   has status   DONE
+DEBUG: Checking if ExtractScrapedData() is complete
+INFO: Informed scheduler that task   ExtractScrapedData__99914b932b   has status   DONE
+DEBUG: Checking if TransformProductData() is complete
+INFO: Informed scheduler that task   TransformProductData__99914b932b   has status   DONE
+DEBUG: Checking if TransformSalesData() is complete
+INFO: Informed scheduler that task   TransformSalesData__99914b932b   has status   DONE
+DEBUG: Checking if TransformScrapedData() is complete
+INFO: Informed scheduler that task   TransformScrapedData__99914b932b   has status   DONE
+DEBUG: Checking if LoadData() is complete
+INFO: Informed scheduler that task   LoadData__99914b932b   has status   DONE
+INFO: Done scheduling tasks
+INFO: Running Worker with 1 processes
+DEBUG: Asking scheduler for work...
+DEBUG: Done
+DEBUG: There are no more tasks to run at this time
+INFO: Worker Worker(salt=8425371668, workers=1, host=LAPTOP-E1BGNT67, username=ricofebrian, pid=6938) was stopped. Shutting down Keep-Alive thread
+INFO: 
+===== Luigi Execution Summary =====
+
+Scheduled 7 tasks of which:
+* 7 complete ones were encountered:
+    - 1 ExtractProductData()
+    - 1 ExtractSalesData()
+    - 1 ExtractScrapedData()
+    - 1 LoadData()
+    - 1 TransformProductData()
+    ...
+
+Did not run any tasks
+This progress looks :) because there were no failed tasks or missing dependencies
+
+===== Luigi Execution Summary =====
+
+DEBUG: Checking if ExtractProductData() is complete
+INFO: Informed scheduler that task   ExtractProductData__99914b932b   has status   DONE
+DEBUG: Checking if ExtractSalesData() is complete
+INFO: Informed scheduler that task   ExtractSalesData__99914b932b   has status   DONE
+DEBUG: Checking if ExtractScrapedData() is complete
+INFO: Informed scheduler that task   ExtractScrapedData__99914b932b   has status   DONE
+DEBUG: Checking if TransformProductData() is complete
+INFO: Informed scheduler that task   TransformProductData__99914b932b   has status   DONE
+DEBUG: Checking if TransformSalesData() is complete
+INFO: Informed scheduler that task   TransformSalesData__99914b932b   has status   DONE
+DEBUG: Checking if TransformScrapedData() is complete
+INFO: Informed scheduler that task   TransformScrapedData__99914b932b   has status   DONE
+DEBUG: Checking if LoadData() is complete
+DEBUG: Checking if TransformProductData() is complete
+DEBUG: Checking if TransformSalesData() is complete
+DEBUG: Checking if TransformScrapedData() is complete
+INFO: Informed scheduler that task   LoadData__99914b932b   has status   PENDING
+INFO: Informed scheduler that task   TransformScrapedData__99914b932b   has status   DONE
+INFO: Informed scheduler that task   TransformSalesData__99914b932b   has status   DONE
+INFO: Informed scheduler that task   TransformProductData__99914b932b   has status   DONE
+INFO: Done scheduling tasks
+INFO: Running Worker with 1 processes
+DEBUG: Asking scheduler for work...
+DEBUG: Pending tasks: 1
+INFO: [pid 7371] Worker Worker(salt=7035903409, workers=1, host=LAPTOP-E1BGNT67, username=ricofebrian, pid=7371) running   LoadData()
+INFO: [pid 7371] Worker Worker(salt=7035903409, workers=1, host=LAPTOP-E1BGNT67, username=ricofebrian, pid=7371) done      LoadData()
+DEBUG: 1 running tasks, waiting for next task to finish
+INFO: Informed scheduler that task   LoadData__99914b932b   has status   DONE
+DEBUG: Asking scheduler for work...
+DEBUG: Done
+DEBUG: There are no more tasks to run at this time
+INFO: Worker Worker(salt=7035903409, workers=1, host=LAPTOP-E1BGNT67, username=ricofebrian, pid=7371) was stopped. Shutting down Keep-Alive thread
+INFO: 
+===== Luigi Execution Summary =====
+
+Scheduled 7 tasks of which:
+* 6 complete ones were encountered:
+    - 1 ExtractProductData()
+    - 1 ExtractSalesData()
+    - 1 ExtractScrapedData()
+    - 1 TransformProductData()
+    - 1 TransformSalesData()
+    ...
+* 1 ran successfully:
+    - 1 LoadData()
+
+This progress looks :) because there were no failed tasks or missing dependencies
+
+===== Luigi Execution Summary =====
+
+Error: 'DataFrame' object has no attribute 'append'
+DEBUG: Checking if ExtractProductData() is complete
+INFO: Informed scheduler that task   ExtractProductData__99914b932b   has status   DONE
+DEBUG: Checking if ExtractSalesData() is complete
+INFO: Informed scheduler that task   ExtractSalesData__99914b932b   has status   DONE
+DEBUG: Checking if ExtractScrapedData() is complete
+INFO: Informed scheduler that task   ExtractScrapedData__99914b932b   has status   DONE
+DEBUG: Checking if TransformProductData() is complete
+INFO: Informed scheduler that task   TransformProductData__99914b932b   has status   DONE
+DEBUG: Checking if TransformSalesData() is complete
+INFO: Informed scheduler that task   TransformSalesData__99914b932b   has status   DONE
+DEBUG: Checking if TransformScrapedData() is complete
+INFO: Informed scheduler that task   TransformScrapedData__99914b932b   has status   DONE
+DEBUG: Checking if LoadData() is complete
+DEBUG: Checking if TransformProductData() is complete
+DEBUG: Checking if TransformSalesData() is complete
+DEBUG: Checking if TransformScrapedData() is complete
+INFO: Informed scheduler that task   LoadData__99914b932b   has status   PENDING
+INFO: Informed scheduler that task   TransformScrapedData__99914b932b   has status   DONE
+INFO: Informed scheduler that task   TransformSalesData__99914b932b   has status   DONE
+INFO: Informed scheduler that task   TransformProductData__99914b932b   has status   DONE
+INFO: Done scheduling tasks
+INFO: Running Worker with 1 processes
+DEBUG: Asking scheduler for work...
+DEBUG: Pending tasks: 1
+INFO: [pid 9856] Worker Worker(salt=2376813015, workers=1, host=LAPTOP-E1BGNT67, username=ricofebrian, pid=9856) running   LoadData()
+INFO: [pid 9856] Worker Worker(salt=2376813015, workers=1, host=LAPTOP-E1BGNT67, username=ricofebrian, pid=9856) done      LoadData()
+DEBUG: 1 running tasks, waiting for next task to finish
+INFO: Informed scheduler that task   LoadData__99914b932b   has status   DONE
+DEBUG: Asking scheduler for work...
+DEBUG: Done
+DEBUG: There are no more tasks to run at this time
+INFO: Worker Worker(salt=2376813015, workers=1, host=LAPTOP-E1BGNT67, username=ricofebrian, pid=9856) was stopped. Shutting down Keep-Alive thread
+INFO: 
+===== Luigi Execution Summary =====
+
+Scheduled 7 tasks of which:
+* 6 complete ones were encountered:
+    - 1 ExtractProductData()
+    - 1 ExtractSalesData()
+    - 1 ExtractScrapedData()
+    - 1 TransformProductData()
+    - 1 TransformSalesData()
+    ...
+* 1 ran successfully:
+    - 1 LoadData()
+
+This progress looks :) because there were no failed tasks or missing dependencies
+
+===== Luigi Execution Summary =====
+
+Error: cannot concatenate object of type '<class 'dict'>'; only Series and DataFrame objs are valid
+DEBUG: Checking if ExtractProductData() is complete
+INFO: Informed scheduler that task   ExtractProductData__99914b932b   has status   DONE
+DEBUG: Checking if ExtractSalesData() is complete
+INFO: Informed scheduler that task   ExtractSalesData__99914b932b   has status   DONE
+DEBUG: Checking if ExtractScrapedData() is complete
+INFO: Informed scheduler that task   ExtractScrapedData__99914b932b   has status   DONE
+DEBUG: Checking if TransformProductData() is complete
+INFO: Informed scheduler that task   TransformProductData__99914b932b   has status   DONE
+DEBUG: Checking if TransformSalesData() is complete
+INFO: Informed scheduler that task   TransformSalesData__99914b932b   has status   DONE
+DEBUG: Checking if TransformScrapedData() is complete
+INFO: Informed scheduler that task   TransformScrapedData__99914b932b   has status   DONE
+DEBUG: Checking if LoadData() is complete
+INFO: Informed scheduler that task   LoadData__99914b932b   has status   DONE
+INFO: Done scheduling tasks
+INFO: Running Worker with 1 processes
+DEBUG: Asking scheduler for work...
+DEBUG: Done
+DEBUG: There are no more tasks to run at this time
+INFO: Worker Worker(salt=4920147266, workers=1, host=LAPTOP-E1BGNT67, username=ricofebrian, pid=12754) was stopped. Shutting down Keep-Alive thread
+INFO: 
+===== Luigi Execution Summary =====
+
+Scheduled 7 tasks of which:
+* 7 complete ones were encountered:
+    - 1 ExtractProductData()
+    - 1 ExtractSalesData()
+    - 1 ExtractScrapedData()
+    - 1 LoadData()
+    - 1 TransformProductData()
+    ...
+
+Did not run any tasks
+This progress looks :) because there were no failed tasks or missing dependencies
+
+===== Luigi Execution Summary =====
+
+DEBUG: Checking if ExtractProductData() is complete
+INFO: Informed scheduler that task   ExtractProductData__99914b932b   has status   DONE
+DEBUG: Checking if ExtractSalesData() is complete
+INFO: Informed scheduler that task   ExtractSalesData__99914b932b   has status   DONE
+DEBUG: Checking if ExtractScrapedData() is complete
+INFO: Informed scheduler that task   ExtractScrapedData__99914b932b   has status   DONE
+DEBUG: Checking if TransformProductData() is complete
+INFO: Informed scheduler that task   TransformProductData__99914b932b   has status   DONE
+DEBUG: Checking if TransformSalesData() is complete
+INFO: Informed scheduler that task   TransformSalesData__99914b932b   has status   DONE
+DEBUG: Checking if TransformScrapedData() is complete
+INFO: Informed scheduler that task   TransformScrapedData__99914b932b   has status   DONE
+DEBUG: Checking if LoadData() is complete
+DEBUG: Checking if TransformProductData() is complete
+DEBUG: Checking if TransformSalesData() is complete
+DEBUG: Checking if TransformScrapedData() is complete
+INFO: Informed scheduler that task   LoadData__99914b932b   has status   PENDING
+INFO: Informed scheduler that task   TransformScrapedData__99914b932b   has status   DONE
+INFO: Informed scheduler that task   TransformSalesData__99914b932b   has status   DONE
+INFO: Informed scheduler that task   TransformProductData__99914b932b   has status   DONE
+INFO: Done scheduling tasks
+INFO: Running Worker with 1 processes
+DEBUG: Asking scheduler for work...
+DEBUG: Pending tasks: 1
+INFO: [pid 13181] Worker Worker(salt=1057660468, workers=1, host=LAPTOP-E1BGNT67, username=ricofebrian, pid=13181) running   LoadData()
+INFO: [pid 13181] Worker Worker(salt=1057660468, workers=1, host=LAPTOP-E1BGNT67, username=ricofebrian, pid=13181) done      LoadData()
+DEBUG: 1 running tasks, waiting for next task to finish
+INFO: Informed scheduler that task   LoadData__99914b932b   has status   DONE
+DEBUG: Asking scheduler for work...
+DEBUG: Done
+DEBUG: There are no more tasks to run at this time
+INFO: Worker Worker(salt=1057660468, workers=1, host=LAPTOP-E1BGNT67, username=ricofebrian, pid=13181) was stopped. Shutting down Keep-Alive thread
+INFO: 
+===== Luigi Execution Summary =====
+
+Scheduled 7 tasks of which:
+* 6 complete ones were encountered:
+    - 1 ExtractProductData()
+    - 1 ExtractSalesData()
+    - 1 ExtractScrapedData()
+    - 1 TransformProductData()
+    - 1 TransformSalesData()
+    ...
+* 1 ran successfully:
+    - 1 LoadData()
+
+This progress looks :) because there were no failed tasks or missing dependencies
+
+===== Luigi Execution Summary =====
+
+Error: All index levels must be named!
