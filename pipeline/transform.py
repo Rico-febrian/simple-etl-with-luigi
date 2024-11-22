@@ -1,6 +1,7 @@
 import luigi
 import pandas as pd
-from extract import ExtractProductData, ExtractSalesData, ExtractScrapedData
+
+from .extract import ExtractProductData, ExtractSalesData, ExtractScrapedData
 
 
 # Luigi task for transform the product data
@@ -440,7 +441,7 @@ class TransformScrapedData(luigi.Task):
     
 
 
- # Run the pipeline       
+ # Run the Transform task       
 if __name__ == '__main__':
     luigi.build([TransformProductData(),
                  TransformSalesData(),

@@ -1,7 +1,8 @@
 import luigi
 import pandas as pd
+
 from bs4 import BeautifulSoup
-from utils_function.db_connector import sales_database_engine
+from .utils_function.db_connector import sales_database_engine
 
 
 # Luigi task for extract the product data
@@ -152,7 +153,7 @@ class ExtractScrapedData(luigi.Task):
         
         
         
- # Run the pipeline       
+ # Run the Extract task     
 if __name__ == '__main__':
     luigi.build([ExtractProductData(),
                  ExtractSalesData(),

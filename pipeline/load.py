@@ -1,8 +1,9 @@
 import luigi
 import pandas as pd
-from utils_function.db_connector import dwh_load_engine
-from extract import ExtractProductData, ExtractSalesData, ExtractScrapedData
-from transform import TransformProductData, TransformSalesData, TransformScrapedData
+
+from .utils_function.db_connector import dwh_load_engine
+from .extract import ExtractProductData, ExtractSalesData, ExtractScrapedData
+from .transform import TransformProductData, TransformSalesData, TransformScrapedData
 
 
 # Luigi task to load the transformed data into the database
@@ -79,7 +80,7 @@ class LoadData(luigi.Task):
         
         
 
- # Run the pipeline       
+ # Run the ETL pipeline       
 if __name__ == '__main__':
     luigi.build([ExtractProductData(),
                  ExtractSalesData(),
