@@ -6,11 +6,11 @@ import os
 load_dotenv()
 
 # Define .env file for sales database
-DB_USER = os.getenv('POSTGRES_USER')
-DB_PASSWORD = os.getenv('POSTGRES_PASSWORD')
-DB_HOST = os.getenv('POSTGRES_HOST')
-DB_PORT = os.getenv('POSTGRES_PORT')
-DB_NAME = os.getenv('POSTGRES_DB')
+DB_USER = os.getenv('SRC_POSTGRES_USER')
+DB_PASSWORD = os.getenv('SRC_POSTGRES_PASSWORD')
+DB_HOST = os.getenv('SRC_POSTGRES_HOST')
+DB_PORT = os.getenv('SRC_POSTGRES_PORT')
+DB_NAME = os.getenv('SRC_POSTGRES_DB')
 
 def sales_database_engine():
     """
@@ -22,11 +22,11 @@ def sales_database_engine():
     return engine
 
 # Define .env file for load database
-DB_USER_LOAD = os.getenv('POSTGRES_USER_LOAD')
-DB_PASSWORD_LOAD = os.getenv('POSTGRES_PASSWORD_LOAD')
-DB_HOST_LOAD = os.getenv('POSTGRES_HOST_LOAD')
-DB_PORT_LOAD = os.getenv('POSTGRES_PORT_LOAD')
-DB_NAME_LOAD = os.getenv('POSTGRES_DB_LOAD')
+DB_USER_LOAD = os.getenv('DWH_POSTGRES_USER')
+DB_PASSWORD_LOAD = os.getenv('DWH_POSTGRES_PASSWORD')
+DB_HOST_LOAD = os.getenv('DWH_POSTGRES_HOST')
+DB_PORT_LOAD = os.getenv('DWH_POSTGRES_PORT')
+DB_NAME_LOAD = os.getenv('DWH_POSTGRES_DB')
 
 
 def dwh_load_engine():

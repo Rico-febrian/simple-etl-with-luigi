@@ -1,7 +1,7 @@
 .env
-/venv
 /dataset
 /dev
 /etl_projects
 **/__pycache__/
 log/logfile.log
+output_data/
