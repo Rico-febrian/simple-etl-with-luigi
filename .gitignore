@@ -4,3 +4,4 @@
 /dev
 /etl_projects
 **/__pycache__/
+log/logfile.log
