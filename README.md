@@ -1,5 +1,7 @@
 # ***How I Built an ETL Pipeline Based on a Case Study***
 
+![ETL Pipeline Design](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/assets/etl_pipeline_design.png)
+
 **Hi there, Welcome to learning logs!**
 
 As part of my ongoing career switch journey to data engineering, I’ve recently been learning about data wrangling, especially I learned about the steps as a Data Engineer takes to build an ETL pipeline.
@@ -13,11 +15,11 @@ As part of my ongoing career switch journey to data engineering, I’ve recently
 
 In this project, I’ll explain the steps I’ve learned to build and ETL Pipeline, including:
 
-**- Requirements Gathering**
+**- [Requirements Gathering](https://github.com/Rico-febrian/simple-etl-with-luigi/edit/main/README.md#requirements-gathering)**
   
-**- Propose a Solution**
+**- [Propose a Solution](https://github.com/Rico-febrian/simple-etl-with-luigi/edit/main/README.md#propose-a-solution)**
 
-**- Implement the Solution:** ---> Click here if you want to jump into the main guide
+**- [Implement the Solution:](https://github.com/Rico-febrian/simple-etl-with-luigi/edit/main/README.md#requirements)** ---> _**Click here to jump directly to the ETL pipeline guide**_
 
   - Scraping additional data using Python
   - Developing an ETL pipeline using Python
@@ -52,7 +54,7 @@ There are three types of datasets I used in this project:
 
 Here's the workflow I followed while building this project:
 
-![project workflow]()
+![project workflow](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/assets/project_workflows.png)
 
 ---
 ---
@@ -363,7 +365,7 @@ Create .env file to store all credential information.
 
 Take a look at this image below
 
-
+![ETL Pipeline Workflow](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/assets/simple_etl_design.png)
 
 I developed each task separately to ensure everything function properly.
 
@@ -536,23 +538,30 @@ Since Luigi doesn't have a built-in scheduler, you can automate the pipeline usi
 
 # Implement the Solution: Testing Scenario
 
-To test the robustness of the ETL pipeline, we will perform an UPSERT process. In this scenario, new data will be added to the sales database. This test will ensure that the ETL pipeline operates according to its schedule and can successfully retrieve and integrate the latest data.
+To test whether the ETL pipeline works properly, I performed a simple testing process. The goal of this test is to ensure that the ETL pipeline runs on schedule and successfully retrieves and integrates the latest data.
 
-- Add New Data: Insert new data into the sales database.
+**Watch this video to see the simulation of the testing scenario: [watch-here](https://youtu.be/M_WQtG4Oe4E)**
 
-- Check Data Warehouse Before Update: Verify the current state of the data warehouse before performing updates.
+In this scenario, I followed these steps:
 
-- Modify Load Task: Adjust the Load task to ensure it updates the data warehouse with the new data.
+- Add new data to the sales database.
 
-- Check Updated Data Warehouse: Verify the data warehouse after the update to confirm that the new data has been correctly integrated.
+  ```
+  insert into amazon_sales_data ("name", main_category, sub_category, image, link, ratings, no_of_ratings, discount_price, actual_price)
+  values ('Testing Product Data', 'Testing Category', 'Testing Sub Category', 'https://sekolahdata-assets.s3.ap-southeast-1.amazonaws.com/notebook-images/mde intro-to-data-eng/testing_image.png', 'https://pacmann.io/', 5, 30, 450, 1000)
+  ```
 
-Data warehouse **before adding a new record** in the sales database.
-![Before](https://github.com/user-attachments/assets/ee9f3305-0049-4cf1-8d7a-133abce8acaa)
+- Check current data in the data warehouse before making updates.
 
-Data warehouse **after upsert**
-![AFter](https://github.com/user-attachments/assets/b1b6a105-fd9a-407e-8527-89d89417a694)
+- Modify the Load task in the ETL script to update the data warehouse with the new data using the Pangres package. Alternatively, you can create a new script for testing based on the modified ETL script.
 
-[Testing Scenario Code](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/testing-scenario.py)
+  Check here to see my modified ETL script for the testing scenario: [testing-script](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/testing-scenario.py)
+
+- Delete all temporary Load data if it is saved without a timestamp to ensure the Luigi task runs properly, **as it relies on idempotency**.
+
+- Run the modified ETL script or testing script.
+
+- Check the data warehouse again to verify if the new data is added correctly.
 
 ---
 ---
