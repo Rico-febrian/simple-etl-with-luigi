@@ -1,29 +1,3 @@
-<<<<<<< HEAD
-# ***Creating a Simple ETL Pipeline with LUIGI***
-
-Hi there!, Welcome to my project. In this guide, I will explain how to develop a simple ETL pipeline based on a common use case
-
----
-
-# Project Background
-**A company wants to improve its sales performance by embarking on a digital transformation. To achieve this, they need to enhance data quality to enable more effective analysis and decision-making**
-
-Based on this background, we can begin building the solution by following these steps:
-
-# 1. Requirement Gathering
-During the requirements gathering stage, I discussed with users and key stakeholders to understand the following:
-
-- **Understanding how the business works**, including business workflows and overall operations.
-
-- **Assessing the source data condition**, including data quality checks, validation, and data format.
-
-- **Evaluating the business situation** to determine if implementation is feasible at this time and whether the company has sufficient budget
-
----
-
-### User Problem
-After discussing with the user, it turns out that the user has the following problem:
-=======
 # ***How I Built an ETL Pipeline Based on a Case Study***
 
 **Hi there, Welcome to learning logs!**
@@ -44,7 +18,6 @@ In this project, I’ll explain the steps I’ve learned to build and ETL Pipeli
 **- Propose a Solution**
 
 **- Implement the Solution:** ---> Click here if you want to jump into the main guide
->>>>>>> 6dc961e (Update: README, main pipeline and testing script)
 
   - Scraping additional data using Python
   - Developing an ETL pipeline using Python
@@ -54,35 +27,6 @@ In this project, I’ll explain the steps I’ve learned to build and ETL Pipeli
 
 **These steps are based on a case study from an E-commerce business.**
 
-<<<<<<< HEAD
-### Main Problem
-
-Based on the issues identified by users, there are 3 main problems:
-
-- **Scattered Data**: Data is fragmented across different sources, including the database and CSV files.
-
-- **Data Quality Issues**: The source data is messy, contains many missing values, and has inconsistent formatting.
-
-- **Lack of Data for Research**: The Data Science team lacks sufficient data to build NLP models and needs additional data from online sources for effective analysis.
-
----
-
-# 2. Proposed Solution
-After understanding how the business operates, the condition of the data sources, and the main problems, **the next step is to discuss with the user to propose solutions and methods that are suitable for the company's current conditions**. Here's the proposed solution:
-
-- **Data Integration**: Integrate all data into a centralized data warehouse to provide a single source of truth.
-
-- **Data Quality Improvement**: Implement data cleaning and transformation processes to handle missing values and ensure data consistency across all sources.
-
-- **Supplementary Data Collection**: Use web scraping techniques to gather additional data required by the Data Science team for NLP modeling.
-
-- **Automated ETL Pipeline**: Develop an automated ETL (Extract, Transform, Load) pipeline using LUIGI to ensure that data is consistently updated and accessible to all relevant teams.
-
-# 3. Implement a Solution
- Once the users and stakeholders agree with the proposed solution, we can proceed to implement it.
-
-### - Create ETL Pipeline
-=======
 ---
 ---
 
@@ -112,17 +56,9 @@ Here's the workflow I followed while building this project:
 
 ---
 ---
->>>>>>> 6dc961e (Update: README, main pipeline and testing script)
 
 **Alright, let's begin!**
 
-<<<<<<< HEAD
-- **Extract**: Read data from each source and save it to a CSV file.
-
-- **Transform**: Validate, clean, and transform each dataset based on user requirements.
-
-- **Load**: Load all transformed data into a single data warehouse
-=======
 # Requirements Gathering
 
 The very first step in this process is requirements gathering. **The main goal is to gain a deep understanding of the business problem, stakeholders’ needs, and the business itself.**
@@ -216,9 +152,7 @@ In reality, **this is a long and iterative process**. However, **let’s assume 
 
 - Sales data
 - Marketing data
->>>>>>> 6dc961e (Update: README, main pipeline and testing script)
 
----
 
 
 
@@ -403,33 +337,6 @@ Create .env file to store all credential information.
  
   - Run the _docker-compose.yml_ file 
 
-<<<<<<< HEAD
-- [Product data transformation requirements](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/user_requirements/product_data_requirements.txt)
-- [Sales data transformation requirements](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/user_requirements/sales_data_requirements.txt)
-- [Scraped data transformartion requirements](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/user_requirements/scraped_data_requirements.txt)
-
----
-  
-## - Integrate and Automate ETL Pipeline 
-
-- **Data Integration**: The Load task in the ETL process integrates data from various sources into a single data warehouse, ensuring that all teams have easy access to the necessary information.
-
-- **Automated Data Updates**: Set up automatic scheduling with "crontab" for ETL processes to ensure that the data in the database is consistently updated. [ETL Pipeline Script for Automate](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/etl_pipeline.sh)
-
----
-
-## - Web Scraping
-
-**!! DISCLAIMER! !**
-
-**INFORMATION FROM WEB SCRAPING IS ONLY DONE FOR LEARNING PURPOSES, NOT FOR CRIMINAL ACTIVITIES**
-
-Scrape data from websites that provide information related to electronic products or sales, as required by the Data Scientist team. In this project, data was scraped from the e-commerce website, Aliexpress.com.
-
-**ALWAYS CHECK THE TERM & CONDITIONS OF A WEBSITE BEFORE DO A WEB SCRAPING!**
-
-**[!! CHECK THIS BEFORE SCRAPING !!](https://webscraping.ai/faq/aliexpress-scraping/is-there-a-limit-to-the-amount-of-data-i-can-scrape-from-aliexpress#:~:text=Terms%20of%20Service%3A%20Before%20you,the%20service%20you%20are%20using.)**
-=======
     ```
     docker-compose up -d
     ```
@@ -455,24 +362,14 @@ Scrape data from websites that provide information related to electronic product
 ### - Create ELT Pipeline task
 
 Take a look at this image below
->>>>>>> 6dc961e (Update: README, main pipeline and testing script)
 
----
 
-<<<<<<< HEAD
-## - How the ETL Pipeline Works
-=======
->>>>>>> 6dc961e (Update: README, main pipeline and testing script)
 
 I developed each task separately to ensure everything function properly.
 
  - **EXTRACT Task**
 
-<<<<<<< HEAD
-This task will extract data from each source and save the output into CSV files. 
-=======
    **The main goal of this task is to read dataset from each source and save it to a CSV file**.
->>>>>>> 6dc961e (Update: README, main pipeline and testing script)
 
     - Extract product data (CSV)
       
@@ -496,17 +393,6 @@ This task will extract data from each source and save the output into CSV files.
 
  - **TRANSFORM Task**
 
-<<<<<<< HEAD
-[Full ETL Pipeline Code](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/etl.py#L12)
-
-***ETL Dependency Graph***
-
-![etl_pipeline](assets/dag_graph.png)
-
----
-
-## - Testing Scenario
-=======
    **The main goal of this task is to validate, clean, and transform each extracted dataset based on user requirements**.
 
    These requirements are defined during the requirements gathering. Assume the user has determined the requirements, check here to see the assumed user requirements: [transformation requirements](https://github.com/Rico-febrian/simple-etl-with-luigi/tree/main/user_requirements)
@@ -650,7 +536,6 @@ Since Luigi doesn't have a built-in scheduler, you can automate the pipeline usi
 
 # Implement the Solution: Testing Scenario
 
->>>>>>> 6dc961e (Update: README, main pipeline and testing script)
 To test the robustness of the ETL pipeline, we will perform an UPSERT process. In this scenario, new data will be added to the sales database. This test will ensure that the ETL pipeline operates according to its schedule and can successfully retrieve and integrate the latest data.
 
 - Add New Data: Insert new data into the sales database.
@@ -670,19 +555,6 @@ Data warehouse **after upsert**
 [Testing Scenario Code](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/testing-scenario.py)
 
 ---
-<<<<<<< HEAD
-
-# - Tools
-The following tools were used to create this project:
-
-- Python
-- Pandas
-- Playwright
-- Pangres
-- Luigi
-- Docker
-- PostgreSQL
-=======
 ---
 
 # Final Result
@@ -705,4 +577,3 @@ Thank you for joining me on this learning experience. I hope you’ve gained val
 
 - [My LinkedIn](www.linkedin.com/in/ricofebrian)
 - [My Medium](https://medium.com/@ricofebrian731)
->>>>>>> 6dc961e (Update: README, main pipeline and testing script)
