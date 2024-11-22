@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 from src.helper.db_connector import sales_database_engine, dwh_load_engine
 from pangres import upsert
 
+
 # Luigi task for extract the product data
 class ExtractProductData(luigi.Task):
     
@@ -35,6 +36,7 @@ class ExtractProductData(luigi.Task):
         product_data.to_csv(self.output().path, index=False)
         
 
+# -------------------------------------------------------------------------------------------------------------------------- #
 
 
 # Luigi task for extract the sales data       
@@ -75,6 +77,7 @@ class ExtractSalesData(luigi.Task):
         extract_sales_data.to_csv(self.output().path, index=False)
         
 
+# -------------------------------------------------------------------------------------------------------------------------- #
 
 
 # Luigi task for parse and extract the scraped data       
@@ -149,6 +152,7 @@ class ExtractScrapedData(luigi.Task):
         scrape_data.to_csv(self.output().path, index=False)
         
 
+# -------------------------------------------------------------------------------------------------------------------------- #
 
 
 # Luigi task for transform the product data
@@ -352,7 +356,8 @@ class TransformProductData(luigi.Task):
         product_data.to_csv(self.output().path, index=False)
     
     
-            
+# -------------------------------------------------------------------------------------------------------------------------- #        
+    
         
 # Luigi task for transform the sales data
 class TransformSalesData(luigi.Task):
@@ -515,6 +520,8 @@ class TransformSalesData(luigi.Task):
         sales_data.to_csv(self.output().path, index=False) 
 
 
+# -------------------------------------------------------------------------------------------------------------------------- #
+
 
 # Luigi task for transform the scraped data
 class TransformScrapedData(luigi.Task):
@@ -584,6 +591,7 @@ class TransformScrapedData(luigi.Task):
         scraped_data.to_csv(self.output().path, index=False)
     
 
+# -------------------------------------------------------------------------------------------------------------------------- #
 
 
 # Luigi task to load the transformed data into the database
@@ -643,6 +651,7 @@ class LoadData(luigi.Task):
         load_product_data.to_csv(self.output()[0].path, index=False)
         load_sales_data.to_csv(self.output()[1].path, index=False)
         load_scraped_data.to_csv(self.output()[2].path, index=False)
+       
         
  # Run the pipeline       
 if __name__ == '__main__':

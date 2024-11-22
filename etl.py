@@ -5,9 +5,6 @@ from src.helper.db_connector import sales_database_engine, dwh_load_engine
 from pangres import upsert
 
 
-
-
-
 # Luigi task for extract the product data
 class ExtractProductData(luigi.Task):
     
@@ -39,7 +36,7 @@ class ExtractProductData(luigi.Task):
         product_data.to_csv(self.output().path, index=False)
         
 
-
+# -------------------------------------------------------------------------------------------------------------------------- #
 
 
 # Luigi task for extract the sales data       
@@ -74,13 +71,13 @@ class ExtractSalesData(luigi.Task):
         query = 'SELECT * FROM amazon_sales_data'
         
         # Read the sales data from the database
-        extract_sales_data = pd.read_sql(sql=query, con=engine)
+        extract_sales_data = pd.read_sql(sql=query, con=engine) 
         
         # Export to CSV
         extract_sales_data.to_csv(self.output().path, index=False)
         
 
-
+# -------------------------------------------------------------------------------------------------------------------------- #
 
 
 # Luigi task for parse and extract the scraped data       
@@ -155,7 +152,7 @@ class ExtractScrapedData(luigi.Task):
         scrape_data.to_csv(self.output().path, index=False)
         
 
-
+# -------------------------------------------------------------------------------------------------------------------------- #
 
 
 # Luigi task for transform the product data
@@ -359,7 +356,7 @@ class TransformProductData(luigi.Task):
         product_data.to_csv(self.output().path, index=False)
     
     
-            
+# -------------------------------------------------------------------------------------------------------------------------- #            
 
         
 # Luigi task for transform the sales data
@@ -523,7 +520,7 @@ class TransformSalesData(luigi.Task):
         sales_data.to_csv(self.output().path, index=False) 
 
 
-
+# -------------------------------------------------------------------------------------------------------------------------- #
 
 
 # Luigi task for transform the scraped data
@@ -594,7 +591,7 @@ class TransformScrapedData(luigi.Task):
         scraped_data.to_csv(self.output().path, index=False)
     
 
-
+# -------------------------------------------------------------------------------------------------------------------------- #
 
 
 # Luigi task to load the transformed data into the database
@@ -640,10 +637,19 @@ class LoadData(luigi.Task):
             load_sales_data = pd.read_csv(self.input()[1].path)
             load_scraped_data = pd.read_csv(self.input()[2].path)
             
+            # # Add a 'sales_id' column with sequential numbers starting from 1
+            # load_sales_data.insert(0, 'sales_id', range(1, 1 + len(load_sales_data)))
+            
+            # # Set 'sales_id' as the index of the DataFrame
+            # load_sales_data.set_index('sales_id', inplace=True)
+            
             # Init table name for each task
             product_data_table = 'product_data'
             sales_data_table = 'sales_data'
             scraped_data_table = 'scraped_data'
+            
+            # Upsert data into database using pangres upsert
+            upsert(con=engine, df=load_sales_data, table_name=sales_data_table, if_row_exists='update')  
         
             # Insert each transformed data into the database
             load_product_data.to_sql(name=product_data_table,
@@ -668,6 +674,7 @@ class LoadData(luigi.Task):
         load_product_data.to_csv(self.output()[0].path, index=False)
         load_sales_data.to_csv(self.output()[1].path, index=False)
         load_scraped_data.to_csv(self.output()[2].path, index=False)
+ 
         
  # Run the pipeline       
 if __name__ == '__main__':

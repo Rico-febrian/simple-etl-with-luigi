@@ -3,3 +3,4 @@
 /dataset
 /dev
 /etl_projects
+**/__pycache__/
