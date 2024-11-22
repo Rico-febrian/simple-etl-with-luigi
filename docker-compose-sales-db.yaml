@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  xyz_sales_database:
+    image: shandytp/amazon-sales-data-docker-db:latest
+    container_name: xyz_sales_database
+    environment:
+      - POSTGRES_USER=${SRC_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${SRC_POSTGRES_PASSWORD}
+      - POSTGRES_DB=${SRC_POSTGRES_DB}
+    ports:
+      - ${SRC_POSTGRES_PORT}:5432
+    volumes:
+      - xyz_salesdb_volume:/var/lib/postgresql/data
+
+volumes:
+  xyz_salesdb_volume: 

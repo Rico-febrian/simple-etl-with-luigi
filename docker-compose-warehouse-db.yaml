@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  xyz_data_warehouse:
+    image: postgres:latest
+    container_name: xyz_data_warehouse
+    environment:
+      - POSTGRES_USER=${DWH_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${DWH_POSTGRES_PASSWORD}
+      - POSTGRES_DB=${DWH_POSTGRES_DB}
+    ports:
+      - ${DWH_POSTGRES_PORT}:5432
+    volumes:
+      - xyz_dwh_volume:/var/lib/postgresql/data
+      - ./helper/dwh_data:/docker-entrypoint-initdb.d
+
+volumes:
+  xyz_dwh_volume:
