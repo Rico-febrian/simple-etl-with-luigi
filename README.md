@@ -15,11 +15,11 @@ As part of my ongoing career switch journey to data engineering, I’ve recently
 
 In this project, I’ll explain the steps I’ve learned to build and ETL Pipeline, including:
 
-**- [Requirements Gathering](https://github.com/Rico-febrian/simple-etl-with-luigi/edit/main/README.md#requirements-gathering)**
+**- [Requirements Gathering](https://github.com/Rico-febrian/simple-etl-with-luigi?tab=readme-ov-file#requirements-gathering)**
   
-**- [Propose a Solution](https://github.com/Rico-febrian/simple-etl-with-luigi/edit/main/README.md#propose-a-solution)**
+**- [Propose a Solution](https://github.com/Rico-febrian/simple-etl-with-luigi?tab=readme-ov-file#propose-a-solution)**
 
-**- [Implement the Solution:](https://github.com/Rico-febrian/simple-etl-with-luigi/edit/main/README.md#requirements)** ---> _**Click here to jump directly to the ETL pipeline guide**_
+**- [Implement the Solution:](https://github.com/Rico-febrian/simple-etl-with-luigi?tab=readme-ov-file#requirements)** ---> _**Click here to jump directly to the ETL pipeline guide**_
 
   - Scraping additional data using Python
   - Developing an ETL pipeline using Python
