@@ -11,15 +11,38 @@ As part of my ongoing career switch journey to data engineering, I’ve recently
 ---
 ---
 
+## Table of Contents
+
+- [Project Objective](https://github.com/Rico-febrian/simple-etl-with-luigi?tab=readme-ov-file#project-objective)
+  
+- [Case Study Background](https://github.com/Rico-febrian/simple-etl-with-luigi?tab=readme-ov-file#case-study-background)
+  
+- [Dataset Overview](https://github.com/Rico-febrian/simple-etl-with-luigi?tab=readme-ov-file#dataset-overview)
+  
+- [Workflows](https://github.com/Rico-febrian/simple-etl-with-luigi?tab=readme-ov-file#workflows)
+  
+- [Requirements Gathering](https://github.com/Rico-febrian/simple-etl-with-luigi?tab=readme-ov-file#requirements-gathering)
+  
+- [Propose a Solution](https://github.com/Rico-febrian/simple-etl-with-luigi?tab=readme-ov-file#propose-a-solution)
+  
+- [Implement the Solution](https://github.com/Rico-febrian/simple-etl-with-luigi?tab=readme-ov-file#requirements)
+  
+- [Final Result](https://github.com/Rico-febrian/simple-etl-with-luigi?tab=readme-ov-file#final-result)
+  
+- [Conclusion](https://github.com/Rico-febrian/simple-etl-with-luigi?tab=readme-ov-file#final-result)
+
+---
+---
+
 # Project Objective
 
 In this project, I’ll explain the steps I’ve learned to build and ETL Pipeline, including:
 
-**- [Requirements Gathering](https://github.com/Rico-febrian/simple-etl-with-luigi?tab=readme-ov-file#requirements-gathering)**
+**- Requirements Gathering**
   
-**- [Propose a Solution](https://github.com/Rico-febrian/simple-etl-with-luigi?tab=readme-ov-file#propose-a-solution)**
+**- Propose a Solution**
 
-**- [Implement the Solution:](https://github.com/Rico-febrian/simple-etl-with-luigi?tab=readme-ov-file#requirements)** ---> _**Click here to jump directly to the ETL pipeline guide**_
+**- Implement the Solution:**
 
   - Scraping additional data using Python
   - Developing an ETL pipeline using Python
@@ -201,37 +224,35 @@ After reaching an agreement on the proposed solution, we can move onto the imple
     - Playwright
     - Beautifulsoup4
 
- **Make sure these tools are installed and set up before starting the implementation!**.
+ > [!NOTE]
+ > **Make sure these tools are installed and set up before starting the implementation!**.
       
 ---
 
 # Implement a Solution: Web Scraping
 
-**!! DISCLAIMER !!**
-
-**ALL INFORMATION FROM WEB SCRAPING IN THIS PROJECT IS ONLY DONE FOR LEARNING PURPOSES!** 
-
-**DO NOT USE WEB SCRAPING FOR CRIMINAL ACTIVITIES. ALWAYS CHECK THE TERM & CONDITIONS OF A WEBSITE BEFORE DO A WEB SCRAPING!**
-
-**[!! CHECK THIS BEFORE SCRAPING !!](https://webscraping.ai/faq/aliexpress-scraping/is-there-a-limit-to-the-amount-of-data-i-can-scrape-from-aliexpress#:~:text=Terms%20of%20Service%3A%20Before%20you,the%20service%20you%20are%20using.)**
-
-**!! DISCLAIMER !!**
+> [!WARNING]
+> **ALL INFORMATION FROM WEB SCRAPING IN THIS PROJECT IS ONLY DONE FOR LEARNING PURPOSES!**
+>
+> **DO NOT USE WEB SCRAPING FOR CRIMINAL ACTIVITIES. ALWAYS CHECK THE TERM & CONDITIONS OF A WEBSITE BEFORE DO A WEB SCRAPING!**
+>
+> **[!! CHECK THIS BEFORE SCRAPING !!](https://webscraping.ai/faq/aliexpress-scraping/is-there-a-limit-to-the-amount-of-data-i-can-scrape-from-aliexpress#:~:text=Terms%20of%20Service%3A%20Before%20you,the%20service%20you%20are%20using.)**
 
 ---
- 
-## Run the Scraping Script
 
 For this project, I scraped data from **[AliExpress.com](https://best.aliexpress.com/?browser_redirect=true)** to gather information aligned with the data science team's needs.
 
-To scrape data, simply run the [scrape.py]() script to extract HTML data from the selected website.
+## Run the Scraping Script
+
+To scrape data for this project, simply run the [scrape.py](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/scrape.py) script to extract HTML data from the selected website.
+
+**For a complete guide and documentation on how I scraped the data, check my other repository:** [scraping-ecommerce-web](https://github.com/Rico-febrian/scraping-ecommerce-website).
 
 ```
 python scrape.py
 ```
 
-**The scraped data is saved as an HTML file, which will be processed and transformed during the ETL process**. You can check the scraped output here: [scraped-output]()
-
-**For the full guide and documentation about web scraping you can check my other repository:** [scrape-data]().
+**The scraped output data is saved as an HTML file. This scraped output will be used in the ETL process.** Check the scraped output here: [scraped-output](https://github.com/Rico-febrian/simple-etl-with-luigi/tree/main/scraping_output)
 
 ---
 ---
@@ -245,7 +266,7 @@ python scrape.py
 - Sales dataset
   
   - Create and run Docker Compose with this image to get the sales dataset: [sales-dataset](https://hub.docker.com/r/shandytp/amazon-sales-data-docker-db)
-  - Check here to see my docker compose configuration: [sales-docker-compose]()
+  - Check here to see my docker compose configuration: [sales-docker-compose](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/docker-compose-sales-db.yaml)
 
 - Marketing dataset
 
@@ -270,12 +291,12 @@ Set up your project directory structure to organize all project scripts.
   
   ```
   project/
-  ├── dataset/ ------------------- # To store dataset
+  ├── helper/ -------------------- # To store SQL query schema
   ├── log/ ----------------------- # To store pipeline logs
   ├── scraping_output/ ----------- # To store scraping output data 
   │
-  ├── src/ 
-  │   └── helper/ ---------------- # To store utility function   
+  ├── pipeline/ ------------------ # To store ETL task script and utility function
+  │   └── utils_function/
   ├── temp/ ---------------------- # To store temporary data from ETL task 
   │   ├── extract/
   │   ├── transform/
@@ -297,8 +318,11 @@ Set up your project directory structure to organize all project scripts.
   ```
   pip install -r requirements.txt
   ```
-  
-**Note: You can install libraries as needed while developing the code. However, once complete, make sure to generate a _requirements.txt_ file listing all dependencies**.
+
+  > [!NOTE]
+  > **You can install libraries or packages as needed while developing the code.**
+  >
+  > **However, once the development is complete, make sure to generate a requirements.txt file to list all the dependencies.**.
 
 ---
 
@@ -311,13 +335,23 @@ Create .env file to store all credential information.
   ```
 
 ---
----
 
-## Developing the ETL Scripts
+### - Set up Sentry for alerting
+
+Set up a Sentry project to receive an e-mail notifications in case of any errors in the pipeline.
+
+  - Open and signup to: https://www.sentry.io 
+  - Create Project :
+    - Select Platform : Python
+    - Set Alert frequency : `On every new issue`
+    - Create project name.
+  - After create the project, **store the SENTRY DSN project key into the .env file**
+
+---
 
 ### - Setup Warehouse Database
 
-  - Create a [docker-compose.yml]() configuration to set up warehouse database.
+  - Create a [dwh-docker-compose](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/docker-compose-warehouse-db.yaml) configuration to set up warehouse database.
   
   - Store database credentials in _.env_ file.
 
@@ -337,10 +371,14 @@ Create .env file to store all credential information.
     DWH_POSTGRES_PORT=[YOUR PORT]
     ```
  
-  - Run the _docker-compose.yml_ file 
+  - Run the _docker compose_ file 
 
     ```
+    # Run this command if you want to use the default configuration
     docker-compose up -d
+    
+    # Or use this command if you need to specify a custom Docker Compose file
+    docker-compose -f YOUR_DOCKER_COMPOSE_FILE_NAME up -d
     ```
 
   - Connect the database to Dbeaver
@@ -354,18 +392,23 @@ Create .env file to store all credential information.
 
 ### - Create utility functions
 
-  **This utility function acts like a basic tool you can use repeatedly when building the pipeline script.**
+  > [!NOTE]
+  > **This utility function acts like a basic tool you can use repeatedly when building the pipeline script.**
 
-  -  [Database connector]()
-      -  Function to connect python and the database
+  -  [Database connector](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/pipeline/utils_function/db_connector.py)
+      
+      -  Function to connect python and the database.
 
 ---
+---
 
-### - Create ELT Pipeline task
+## Developing the ETL Scripts
 
-Take a look at this image below
+Take a look at the image below to see how the ETL pipeline works:
 
 ![ETL Pipeline Workflow](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/assets/simple_etl_design.png)
+
+### - Create ETL Pipeline task
 
 I developed each task separately to ensure everything function properly.
 
@@ -389,7 +432,7 @@ I developed each task separately to ensure everything function properly.
 
    **Ensure that all extracted data is saved in the selected directory, as it will be used in the Transform task!**
    
-   Check here for the full Extract task: [extract-task]()
+   Check here for the full Extract task: [extract-task](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/pipeline/extract.py)
 
 ---
 
@@ -415,7 +458,7 @@ I developed each task separately to ensure everything function properly.
 
    **Ensure that all transformed data is saved in the selected directory, as it will be used in the Load task!**
    
-   Check here for the full Transform task: [transform-task]()
+   Check here for the full Transform task: [transform-task](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/pipeline/transform.py)
 
 ---
 
@@ -433,39 +476,42 @@ I developed each task separately to ensure everything function properly.
       
     - Load each transformed data into the warehouse database 
    
-   Check here for the full Load task: [load-task]()
+   Check here for the full Load task: [load-task](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/pipeline/load.py)
 
 ---
 ---
 
 ## Orchestrating the Pipeline with Luigi
 
-**NOTE: Luigi has some limitations you should be aware of when using it for data orchestration, such as:**
-
-- History Task Retention (only 15 minutes by default)
-- Idempotency Requirement
-- No Built-in Scheduler
-
-For a detailed explanation, you can check the documentation: [Luigi Limitations](https://luigi.readthedocs.io/en/stable/design_and_limitations.html)
+> [!CAUTION]
+> **Luigi has some limitations you should be aware of when using it for data orchestration, such as:**
+> 
+> - History Task Retention (only 15 minutes by default)
+>   
+> - Idempotency Requirement
+>   
+> - No Built-in Scheduler
+>   
+> - For a detailed explanation, you can check the documentation: [Luigi Limitations](https://luigi.readthedocs.io/en/stable/design_and_limitations.html)
 
 ### - Compile all task
 
-Compile all task into a single main script, like this: [main_elt_pipeline.py]()
+Compile all task into a single main script, like this: [main_etl_script](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/etl.py)
 
-### - Run the ELT Pipeline
+### - Run the ETL Pipeline
 
 Run the main script to test the pipeline end-to-end
 ```
 python YOUR_MAIN_PIPELINE_NAME.py
 ```
 
-**NOTE: When developed the script you can run the Luigi task separately**
+> [!NOTE]
+> **When developed the script you can run the Luigi task separately**
 ```
-# In your task script, run this:
-if __name__ == '__main__':
-     luigi.build(<TASK NAME>()])
+  # In your task script, run this:
+  if __name__ == '__main__':
+       luigi.build(<TASK NAME>()])
 ```
-
 **Or you can execute all of them at once**
 ```
 # In your final task script, run this:
@@ -477,20 +523,21 @@ if __name__ == '__main__':
 ```
 
 ### - Verify all outputs
-If your pipeline runs successfully, you can verify it in DBeaver by checking the warehouse database
+
+If your pipeline runs successfully, you can verify the output in DBeaver by checking the warehouse database.
 
 ---
 ---
 
 # Implement the Solution: Automate the Pipeline with Cron
 
-Since Luigi doesn't have a built-in scheduler, you can automate the pipeline using Cron
+Since Luigi doesn't have a built-in scheduler, you can automate the pipeline using Cron.
 
 ## Set up schedulers
 
 - Create a cron job to automate pipeline execution.
   
-  - Create shell script [elt_pipeline.sh](https://github.com/Rico-febrian/elt-dwh-for-online-bookstore-business/blob/main/elt_pipeline.sh)
+  - Create shell script
     ```
     touch SHELL_SCRIPT_NAME.sh
     ```
@@ -532,7 +579,9 @@ Since Luigi doesn't have a built-in scheduler, you can automate the pipeline usi
     ```
     ./SHELL_SCRIPT_NAME.sh
     ```
-  
+
+  Check here for the full shell script: [elt_pipeline.sh](https://github.com/Rico-febrian/elt-dwh-for-online-bookstore-business/blob/main/elt_pipeline.sh)
+
 ---
 ---
 
