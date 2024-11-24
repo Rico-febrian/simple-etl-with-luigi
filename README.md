@@ -175,11 +175,77 @@ In reality, **this is a long and iterative process**. However, **let’s assume 
 
 ## Understanding the Current Data Source
 
-- Sales data
-- Marketing data
+### - Sales data
 
+The current sales data is stored in a PostgreSQL database.
 
+- Data Structure and Format
 
+  - Schema Structure: Single schema (public), all data is stored in one main table.
+  
+  - Data Types: All columns use VARCHAR.
+
+- Data Flow
+
+  The current source data is collected from an e-commerce platform:
+
+  - Batch file uploads (e.g., daily exports from a transactional system).
+
+  - APIs sending transactional data periodically or in real-time.
+
+  Update Frequency: Daily updates to ensure the data stays relatively fresh.
+
+- Data Volume and Growth Trends
+
+  - The current data consists of approximately 100,000+ rows across one main table.
+  
+  - Data Growth: The data is expected to grow moderately (e.g., 1,000–10,000 rows per month).
+
+- Data Quality
+
+  - Missing values in the ratings and no_of_ratings columns.
+  
+  - Duplicate records and value are present in many columns.
+  
+  - Many column names are unclear, making it difficult to understand their purpose.
+  
+  - The table does not have a primary key to ensure record uniqueness.
+  
+---
+
+### - Marketing data
+
+The current marketing data is stored in a CSV file.
+
+- Data Structure and Format
+
+  - Data Types: A mix of VARCHAR, FLOAT, and BOOLEAN.
+
+- Data Flow
+
+  The current source data is collected from marketing campaigns, including:
+
+  - Campaign tracking tools (e.g., Google Ads, Facebook Ads).
+
+  - Surveys and feedback forms.
+    
+  - Email marketing platforms (e.g., Mailchimp, SendGrid).
+
+  Update Frequency: Data is updated weekly to capture the latest marketing performance and customer interactions.
+
+- Data Volume and Growth Trends
+
+  - The current data consists of approximately 7,000+ rows across one main table.
+
+  - Data Growth: The data is expected to grow at a moderate pace, around 500–1,000 rows per month, as new marketing campaigns and feedback are added.
+
+- Data Quality
+
+  - Missing values in some columns.
+  
+  - No duplicated records, but duplicate values are present in many columns.
+  
+  - Many column names are unclear, making it difficult to understand their purpose.
 
 ---
 ---
@@ -246,11 +312,11 @@ For this project, I scraped data from **[AliExpress.com](https://best.aliexpress
 
 To scrape data for this project, simply run the [scrape.py](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/scrape.py) script to extract HTML data from the selected website.
 
-**For a complete guide and documentation on how I scraped the data, check my other repository:** [scraping-ecommerce-web](https://github.com/Rico-febrian/scraping-ecommerce-website).
-
 ```
 python scrape.py
 ```
+
+**For a complete guide and documentation on how I scraped the data, check my other repository:** [scraping-ecommerce-web](https://github.com/Rico-febrian/scraping-ecommerce-website).
 
 **The scraped output data is saved as an HTML file. This scraped output will be used in the ETL process.** Check the scraped output here: [scraped-output](https://github.com/Rico-febrian/simple-etl-with-luigi/tree/main/scraping_output)
 
@@ -265,8 +331,8 @@ python scrape.py
 
 - Sales dataset
   
-  - Create and run Docker Compose with this image to get the sales dataset: [sales-dataset](https://hub.docker.com/r/shandytp/amazon-sales-data-docker-db)
-  - Check here to see my docker compose configuration: [sales-docker-compose](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/docker-compose-sales-db.yaml)
+  - Use Docker Compose with the provided image to get the sales dataset: [sales-dataset](https://hub.docker.com/r/shandytp/amazon-sales-data-docker-db)
+  - For the explanation how to run Docker Compose are explain below.
 
 - Marketing dataset
 
@@ -349,15 +415,19 @@ Set up a Sentry project to receive an e-mail notifications in case of any errors
 
 ---
 
-### - Setup Warehouse Database
+### - Setup Database
 
-  - Create a [dwh-docker-compose](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/docker-compose-warehouse-db.yaml) configuration to set up warehouse database.
+  - Use Docker Compose to set up the sales and warehouse databases:
   
-  - Store database credentials in _.env_ file.
+    - Warehouse Docker Compose configuration: [dwh-docker-compose](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/docker-compose-warehouse-db.yaml)
+    
+    - Sales Docker Compose configuration: [sales-docker-compose](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/docker-compose-sales-db.yaml)
+  
+  - Store each database credentials in _.env_ file.
 
     ```
     # Sales Data Source
-    SRC_POSTGRES_DB=[YOUR SOURCE DB NAME]
+    SRC_POSTGRES_DB=[YOUR SALES DB NAME]
     SRC_POSTGRES_HOST=localhost
     SRC_POSTGRES_USER=[YOUR USERNAME]
     SRC_POSTGRES_PASSWORD=[YOUR PASSWORD]
@@ -374,7 +444,7 @@ Set up a Sentry project to receive an e-mail notifications in case of any errors
   - Run the _docker compose_ file 
 
     ```
-    # Run this command if you want to use the default configuration
+    # Run this command if you're using the default configuration
     docker-compose up -d
     
     # Or use this command if you need to specify a custom Docker Compose file
@@ -382,10 +452,15 @@ Set up a Sentry project to receive an e-mail notifications in case of any errors
     ```
 
   - Connect the database to Dbeaver
+
     - Click **Database** > select **New Database Connection**
+
     - Select postgreSQL
+
     - Fill in the port, database, username, and password **as defined in your _.env_**
+
     - Click **Test Connection**
+
     - If no errors appear, the database connection is successful
 
 ---
@@ -407,6 +482,8 @@ Set up a Sentry project to receive an e-mail notifications in case of any errors
 Take a look at the image below to see how the ETL pipeline works:
 
 ![ETL Pipeline Workflow](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/assets/simple_etl_design.png)
+
+---
 
 ### - Create ETL Pipeline task
 
