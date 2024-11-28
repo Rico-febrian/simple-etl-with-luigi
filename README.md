@@ -38,11 +38,11 @@ As part of my ongoing career switch journey to data engineering, I’ve recently
 
 In this project, I’ll explain the steps I’ve learned to build and ETL Pipeline, including:
 
-**- Requirements Gathering**
+- **Requirements Gathering**
   
-**- Propose a Solution**
+- **Propose a Solution**
 
-**- Implement the Solution:**
+- **Implement the Solution:**
 
   - Scraping additional data using Python
   - Developing an ETL pipeline using Python
@@ -94,34 +94,34 @@ In reality, **this is a long and iterative process**. However, **let’s assume 
 
 ## Understanding the Business
  
- **- Business Model:** The company adopted the Business-to-consumer (B2C) and Consumer-to-consumer (C2C).
+ - **Business Model:** The company adopted the Business-to-consumer (B2C) and Consumer-to-consumer (C2C).
  
- **- Business Type:** The company business type is E-commerce.
+ - **Business Type:** The company business type is E-commerce.
  
- **- Key Business Process:**
+ - **Key Business Process:**
    
    - Order processing
    - Inventory management
    - Revenue management
    - Customer service
 
- **- Business High-priority Metrics/KPI's:**
+ - **Business High-priority Metrics/KPI's:**
   
    - **Sales performance:**
 
-     Monitor revenue on a daily, monthly, and yearly basis
+       Monitor revenue on a daily, monthly, and yearly basis
    
    - **Profitability analysis:**
 
-     Evaluate which products, customer segments, or other factors are most profitable to refine business strategies.
+       Evaluate which products, customer segments, or other factors are most profitable to refine business strategies.
    
    - **Customer segmentation:**
 
-     Identify customer groups based on purchasing habits, demographics, and other factors.
+       Identify customer groups based on purchasing habits, demographics, and other factors.
    
    - **Sales forecasting:**
 
-     Predicting future sales trends and demand to optimize business strategies.
+       Predicting future sales trends and demand to optimize business strategies.
 
 ---
 
@@ -151,101 +151,101 @@ In reality, **this is a long and iterative process**. However, **let’s assume 
  
  ## Understanding the Needs of Stakeholders & Users
  
- **- Retrieve data quickly:**
+ - **Retrieve data quickly:**
  
- Stakeholders want an easy and fast access to the data anytime. 
+   Stakeholders want an easy and fast access to the data anytime. 
  
- **- Improve data quality:**
+ - **Improve data quality:**
  
- Users require a clean, accurate, and reliable data for analytics.
+   Users require a clean, accurate, and reliable data for analytics.
  
- **- Daily data updates:**
+ - **Daily data updates:**
  
- Users need daily data updates for regular needs (such as meetings) and unexpected requests.
+   Users need daily data updates for regular needs (such as meetings) and unexpected requests.
  
- **- Additional data for research:**
+ - **Additional data for research:**
  
- The Data Science team requires extra data to build an NLP model
+   The Data Science team requires extra data to build an NLP model
  
- **- Cost efficiency and scalability:**
+ - **Cost efficiency and scalability:**
  
- With limited funds, stakeholders prefer a low-cost, scalable solution that allows experimentation before larger investments
+   With limited funds, stakeholders prefer a low-cost, scalable solution that allows experimentation before larger investments
 
 ---
 
 ## Understanding the Current Data Source
 
-### - Sales data
+- ### Sales data
 
-The current sales data is stored in a PostgreSQL database.
+  The current sales data is stored in a PostgreSQL database.
 
-- Data Structure and Format
-
-  - Schema Structure: Single schema (public), all data is stored in one main table.
+  - **Data Structure and Format**
   
-  - Data Types: All columns use VARCHAR.
-
-- Data Flow
-
-  The current source data is collected from an e-commerce platform:
-
-  - Batch file uploads (e.g., daily exports from a transactional system).
-
-  - APIs sending transactional data periodically or in real-time.
-
-  Update Frequency: Daily updates to ensure the data stays relatively fresh.
-
-- Data Volume and Growth Trends
-
-  - The current data consists of approximately 100,000+ rows across one main table.
+    - Schema Structure: Single schema (public), all data is stored in one main table.
+    
+    - Data Types: All columns use VARCHAR.
   
-  - Data Growth: The data is expected to grow moderately (e.g., 1,000–10,000 rows per month).
-
-- Data Quality
-
-  - Missing values in the ratings and no_of_ratings columns.
+  - **Data Flow**
   
-  - Duplicate records and value are present in many columns.
+    The current source data is collected from an e-commerce platform:
   
-  - Many column names are unclear, making it difficult to understand their purpose.
+    - Batch file uploads (e.g., daily exports from a transactional system).
   
-  - The table does not have a primary key to ensure record uniqueness.
+    - APIs sending transactional data periodically or in real-time.
+  
+    Update Frequency: Daily updates to ensure the data stays relatively fresh.
+  
+  - **Data Volume and Growth Trends**
+  
+    - The current data consists of approximately 100,000+ rows across one main table.
+    
+    - Data Growth: The data is expected to grow moderately (e.g., 1,000–10,000 rows per month).
+  
+  - **Data Quality**
+  
+    - Missing values in the ratings and no_of_ratings columns.
+    
+    - Duplicate records and value are present in many columns.
+    
+    - Many column names are unclear, making it difficult to understand their purpose.
+    
+    - The table does not have a primary key to ensure record uniqueness.
   
 ---
 
-### - Marketing data
+- ### Marketing data
 
-The current marketing data is stored in a CSV file.
+  The current marketing data is stored in a CSV file.
 
-- Data Structure and Format
-
-  - Data Types: A mix of VARCHAR, FLOAT, and BOOLEAN.
-
-- Data Flow
-
-  The current source data is collected from marketing campaigns, including:
-
-  - Campaign tracking tools (e.g., Google Ads, Facebook Ads).
-
-  - Surveys and feedback forms.
+  - **Data Structure and Format**
+  
+    - Data Types: A mix of VARCHAR, FLOAT, and BOOLEAN.
+  
+  - **Data Flow**
+  
+    The current source data is collected from marketing campaigns, including:
+  
+    - Campaign tracking tools (e.g., Google Ads, Facebook Ads).
+  
+    - Surveys and feedback forms.
+      
+    - Email marketing platforms (e.g., Mailchimp, SendGrid).
+  
+    Update Frequency: Data is updated weekly to capture the latest marketing performance and customer interactions.
+  
+  - **Data Volume and Growth Trends**
+  
+    - The current data consists of approximately 7,000+ rows across one main table.
+  
+    - Data Growth: The data is expected to grow at a moderate pace, around 500–1,000 rows per month, as new marketing campaigns and feedback are added.
+  
+  - **Data Quality**
+  
+    - Missing values in some columns.
     
-  - Email marketing platforms (e.g., Mailchimp, SendGrid).
-
-  Update Frequency: Data is updated weekly to capture the latest marketing performance and customer interactions.
-
-- Data Volume and Growth Trends
-
-  - The current data consists of approximately 7,000+ rows across one main table.
-
-  - Data Growth: The data is expected to grow at a moderate pace, around 500–1,000 rows per month, as new marketing campaigns and feedback are added.
-
-- Data Quality
-
-  - Missing values in some columns.
-  
-  - No duplicated records, but duplicate values are present in many columns.
-  
-  - Many column names are unclear, making it difficult to understand their purpose.
+    - No duplicated records, but duplicate values are present in many columns.
+    
+    - Many column names are unclear, making it difficult to understand their purpose.
 
 ---
 ---
@@ -254,15 +254,15 @@ The current marketing data is stored in a CSV file.
 
 After a long and iterative requirements gathering process, **let’s assume the stakeholders have agreed to this proposed solution, despite its advantages and disadvantages:**
 
-**- Build an ETL Pipeline**
+- **Build an ETL Pipeline**
  
- - Integrate all data source into a centralized data warehouse for quick and easy access.
- - Clean and transform data to improve data quality across all sources.
- - Automate ETL Pipeline with Cron for daily updates
+   - Integrate all data source into a centralized data warehouse for quick and easy access.
+   - Clean and transform data to improve data quality across all sources.
+   - Automate ETL Pipeline with Cron for daily updates
 
-**- Web Scraping**
+- **Web Scraping**
 
- - Use web scraping to collect additional data.
+   - Use web scraping to collect additional data.
 
 ---
 ---
@@ -327,34 +327,34 @@ python scrape.py
 
 ## Preparations
 
-### - Get the dataset
+- ### Get the dataset
 
-- Sales dataset
+  - **Sales dataset**
+    
+    - Use Docker Compose with the provided image to get the sales dataset: [sales-dataset](https://hub.docker.com/r/shandytp/amazon-sales-data-docker-db)
+    - For the explanation how to run Docker Compose are explain below.
   
-  - Use Docker Compose with the provided image to get the sales dataset: [sales-dataset](https://hub.docker.com/r/shandytp/amazon-sales-data-docker-db)
-  - For the explanation how to run Docker Compose are explain below.
-
-- Marketing dataset
-
-  Download this CSV file to get the marketing dataset: [marketing-dataset](https://drive.google.com/file/d/1J0Mv0TVPWv2L-So0g59GUiQJBhExPYl6/view?usp=sharing)
+  - **Marketing dataset**
+  
+    Download this CSV file to get the marketing dataset: [marketing-dataset](https://drive.google.com/file/d/1J0Mv0TVPWv2L-So0g59GUiQJBhExPYl6/view?usp=sharing)
 
 ---
 
-### - Setup project environment
+- ### Setup project environment
 
-Create and activate python environment to isolate project dependencies.
-
-```
-python -m venv your_project_name         
-source your_project_name/bin/activate    # On Windows: your_project_name\Scripts\activate
-```
+  Create and activate python environment to isolate project dependencies.
+  
+  ```
+  python -m venv your_project_name         
+  source your_project_name/bin/activate    # On Windows: your_project_name\Scripts\activate
+  ```
 
 ---
 
-### - Set up a directory structure
+- ### Set up a directory structure
 
-Set up your project directory structure to organize all project scripts.
-  
+  Set up your project directory structure to organize all project scripts.
+    
   ```
   project/
   ├── helper/ -------------------- # To store SQL query schema
@@ -379,7 +379,7 @@ Set up your project directory structure to organize all project scripts.
 
 ---
 
-### - Install _requirements.txt_ in the created environment**
+- ### Install _requirements.txt_ in the created environment**
   
   ```
   pip install -r requirements.txt
@@ -392,9 +392,9 @@ Set up your project directory structure to organize all project scripts.
 
 ---
 
-### - Create _.env_ file
+- ### Create _.env_ file
 
-Create .env file to store all credential information.
+  Create .env file to store all credential information.
   
   ```
   touch .env
@@ -402,9 +402,9 @@ Create .env file to store all credential information.
 
 ---
 
-### - Set up Sentry for alerting
+- ### Set up Sentry for alerting
 
-Set up a Sentry project to receive an e-mail notifications in case of any errors in the pipeline.
+  Set up a Sentry project to receive an e-mail notifications in case of any errors in the pipeline.
 
   - Open and signup to: https://www.sentry.io 
   - Create Project :
@@ -415,15 +415,15 @@ Set up a Sentry project to receive an e-mail notifications in case of any errors
 
 ---
 
-### - Setup Database
+- ### Setup Database
 
-  - Use Docker Compose to set up the sales and warehouse databases:
+  - **Use Docker Compose to set up the sales and warehouse databases**
   
     - Warehouse Docker Compose configuration: [dwh-docker-compose](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/docker-compose-warehouse-db.yaml)
     
     - Sales Docker Compose configuration: [sales-docker-compose](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/docker-compose-sales-db.yaml)
   
-  - Store each database credentials in _.env_ file.
+  - **Store each database credentials in _.env_ file**
 
     ```
     # Sales Data Source
@@ -441,7 +441,7 @@ Set up a Sentry project to receive an e-mail notifications in case of any errors
     DWH_POSTGRES_PORT=[YOUR PORT]
     ```
  
-  - Run the _docker compose_ file 
+  - **Run the _docker compose_ file** 
 
     ```
     # Run this command if you're using the default configuration
@@ -451,7 +451,7 @@ Set up a Sentry project to receive an e-mail notifications in case of any errors
     docker-compose -f YOUR_DOCKER_COMPOSE_FILE_NAME up -d
     ```
 
-  - Connect the database to Dbeaver
+  - **Connect the database to Dbeaver**
 
     - Click **Database** > select **New Database Connection**
 
@@ -465,14 +465,14 @@ Set up a Sentry project to receive an e-mail notifications in case of any errors
 
 ---
 
-### - Create utility functions
+- ### Create utility functions
 
-  > [!NOTE]
-  > **This utility function acts like a basic tool you can use repeatedly when building the pipeline script.**
+  - [Database connector](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/pipeline/utils_function/db_connector.py)
 
-  -  [Database connector](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/pipeline/utils_function/db_connector.py)
-      
-      -  Function to connect python and the database.
+    Function to connect python and the database.
+
+> [!NOTE]
+> **This utility function acts like a basic tool you can use repeatedly when building the pipeline script.**
 
 ---
 ---
@@ -485,35 +485,33 @@ Take a look at the image below to see how the ETL pipeline works:
 
 ---
 
-### - Create ETL Pipeline task
-
 I developed each task separately to ensure everything function properly.
 
- - **EXTRACT Task**
+- ### EXTRACT Task
 
-   **The main goal of this task is to read dataset from each source and save it to a CSV file**.
+  **The main goal of this task is to read dataset from each source and save it to a CSV file**.
 
-    - Extract product data (CSV)
-      
-      - Read the product data and save it as a CSV file using Pandas.
-    
-    - Extract sales data (PostgreSQL Database)
-    
-      - Connect to sales database.
-      - Create SQL query to read all data and save it as a CSV file using Pandas.
-      
-    - Extract scraped data (HTML file)
-  
-      - Open and parse the HTML file using Beautifulsoup4.
-      - Convert the parsed data into DataFrame and save it as a CSV file using Pandas.
+  - **Extract product data (CSV)**
 
-   **Ensure that all extracted data is saved in the selected directory, as it will be used in the Transform task!**
+    - Read the product data and save it as a CSV file using Pandas.
+
+  - **Extract sales data (PostgreSQL Database)**
+
+    - Connect to sales database.
+    - Create SQL query to read all data and save it as a CSV file using Pandas
+
+  - **Extract scraped data (HTML file)**
+
+    - Open and parse the HTML file using Beautifulsoup4.
+    - Convert the parsed data into DataFrame and save it as a CSV file using Pandas.
+
+  **Ensure that all extracted data is saved in the selected directory, as it will be used in the Transform task!**
    
-   Check here for the full Extract task: [extract-task](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/pipeline/extract.py)
+  Check here for the full Extract task: [extract-task](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/pipeline/extract.py)
 
 ---
 
- - **TRANSFORM Task**
+- ### TRANSFORM Task
 
    **The main goal of this task is to validate, clean, and transform each extracted dataset based on user requirements**.
 
@@ -539,7 +537,7 @@ I developed each task separately to ensure everything function properly.
 
 ---
 
- - **LOAD Task**
+ - ### LOAD Task
 
    **The main goal of this task is to load all transformed data into the relevant tables in the data warehouse**.
 
@@ -571,37 +569,41 @@ I developed each task separately to ensure everything function properly.
 >   
 > - For a detailed explanation, you can check the documentation: [Luigi Limitations](https://luigi.readthedocs.io/en/stable/design_and_limitations.html)
 
-### - Compile all task
+- ### Compile all task
 
-Compile all task into a single main script, like this: [main_etl_script](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/etl.py)
+  Compile all task into a single main script, like this: [main_etl_script](https://github.com/Rico-febrian/simple-etl-with-luigi/blob/main/etl.py)
 
-### - Run the ETL Pipeline
+- ### Run the ETL pipeline
 
-Run the main script to test the pipeline end-to-end
-```
-python YOUR_MAIN_PIPELINE_NAME.py
-```
+  Run the main script to test the pipeline end-to-end
 
-> [!NOTE]
-> **When developed the script you can run the Luigi task separately**
-```
+  ```
+  python YOUR_MAIN_PIPELINE_NAME.py
+  ```
+
+  **When developing the script, you can run Luigi tasks separately or execute all of them at once**
+
+  ```
+  # Running Tasks Separately
+
   # In your task script, run this:
   if __name__ == '__main__':
-       luigi.build(<TASK NAME>()])
-```
-**Or you can execute all of them at once**
-```
-# In your final task script, run this:
-if __name__ == '__main__':
-     luigi.build([<TASK A>(),
-                  <TASK B>(),
-                  ..........
-                  <UNTIL YOUR LAST TASK>()])
-```
+      luigi.build(<TASK NAME>()])
+  ```
+  ```
+  # Executing All Tasks
 
-### - Verify all outputs
+  # To execute all tasks in sequence, include this in your final task script:
+  if __name__ == '__main__':
+       luigi.build([<TASK A>(),
+                    <TASK B>(),
+                    ..........
+                    <UNTIL YOUR LAST TASK>()])
+  ```
 
-If your pipeline runs successfully, you can verify the output in DBeaver by checking the warehouse database.
+- ### Verify all outputs
+
+  If your pipeline runs successfully, you can verify the output in DBeaver by checking the warehouse database.
 
 ---
 ---
@@ -612,9 +614,10 @@ Since Luigi doesn't have a built-in scheduler, you can automate the pipeline usi
 
 ## Set up schedulers
 
-- Create a cron job to automate pipeline execution.
+- **Create a cron job to automate pipeline execution**
   
-  - Create shell script
+  - **Create shell script**
+    
     ```
     touch SHELL_SCRIPT_NAME.sh
     ```
@@ -636,23 +639,28 @@ Since Luigi doesn't have a built-in scheduler, you can automate the pipeline usi
     python "$PYTHON_SCRIPT"
     ```
 
-  - Make the script executable
+  - **Make the script executable**
     ```
     # In your shell script directory, run this
     chmod +x SHELL_SCRIPT_NAME.sh
     ```
-  - Set up cron job
+    
+  - **Set up cron job**
+
     ```
     # Open crontab
     crontab -e
     ```
+
     ```
     # In crontab editor
 
     # Set the schedule like this to run the pipeline EVERY HOUR
     0 * * * * /PATH/TO/YOUR/SHELL/SCRIPT/SHELL_SCRIPT_NAME.sh
     ```
+
   - Or you can run the shell script manually
+    
     ```
     ./SHELL_SCRIPT_NAME.sh
     ```
